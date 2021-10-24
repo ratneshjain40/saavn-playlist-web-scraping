@@ -13,9 +13,12 @@ def get_api(token,song_limit = 300):
 url = f'<Replace Your Playlist URL HERE>'
 token = parse_url(url)
 
+# pass a second parameter if your playlist size is greater than 300
+api = get_api(token)
+
 s = requests.session()
 res = s.get(url)
-api_response = s.get(get_api(token))
+api_response = s.get(api)
 data = api_response.json()
 
 with open("data_file.json", "w") as write_file:
